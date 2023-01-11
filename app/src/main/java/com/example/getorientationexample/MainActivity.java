@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 
 /*public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ import android.os.Bundle;
 }*/
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
+
+    private static final String TAG = "MainActivity";
 
     private SensorManager mSensorManager;
     Sensor accelerometer;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
                 azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+                Log.d(TAG, "onSensorChanged: azimut: " + orientation[0] + " pitch: " + orientation[1] + " roll: " + orientation[2]);
             }
         }
     }
