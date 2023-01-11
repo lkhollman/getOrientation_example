@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {  }
 
     float azimut;
+    float pitch;
+    float roll;
+
 
     float[] mGravity;
     float[] mGeomagnetic;
@@ -65,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
                 azimut = orientation[0]; // orientation contains: azimut, pitch and roll
+                pitch = orientation[1];
+                roll = orientation[2];
                 Log.d(TAG, "onSensorChanged: azimut: " + orientation[0] + " pitch: " + orientation[1] + " roll: " + orientation[2]);
             }
         }
